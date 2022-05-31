@@ -1,4 +1,5 @@
 using eTicket_for_movies.Data;
+using eTicket_for_movies.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,9 @@ namespace eTicket_for_movies
             //DbContext configuration
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaulConnectionString")));
+            //Services Configuration
+            services.AddScoped<IActorservice, ActorService>();
+
             services.AddControllersWithViews();
         }
 
