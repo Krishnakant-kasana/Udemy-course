@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTicket_for_movies.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eTicket_for_movies.Models
 {
-    public class Producer
+    public class Producer: IEntityBase 
     {
         [Key]
         public int Id { get; set; }
