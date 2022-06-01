@@ -16,7 +16,7 @@ namespace eTicket_for_movies.Models
         public string ProfilePictureURL { get; set; }
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Full name  is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage ="Full nam emust be between 3 and 50 chars")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage ="Full name must be between 3 and 50 chars")]
 
         public string FullName{ get; set; }
         [Display(Name = "Biography")]

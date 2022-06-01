@@ -37,7 +37,7 @@ namespace eTicket_for_movies.Data.Base
         public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
             
          
-        public async Task UpdateAsync(int id, T entity)
+        public async Task  UpdateAsync(int id, T entity)
         {
             EntityEntry entityEntry = _context.Entry<T>(entity);
             entityEntry.State = EntityState.Modified;

@@ -13,5 +13,10 @@ namespace eTicket_for_movies.Data.Services
         {
 
         }
+
+        public Task GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
