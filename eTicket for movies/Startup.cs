@@ -37,7 +37,7 @@ namespace eTicket_for_movies
             services.AddScoped<IProducerService, ProducersService>();
             services.AddScoped<ICinemasService, CinemasService>();
             services.AddScoped<IMoviesService, MoviesService > ();
-            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
             services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc)) ;
             services.AddSession();
 
