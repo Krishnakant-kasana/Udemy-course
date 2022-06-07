@@ -1,7 +1,9 @@
 using eTicket_for_movies.Data;
 using eTicket_for_movies.Data.Services;
+using eTickets.Data.Cart;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,9 @@ namespace eTicket_for_movies
             services.AddScoped<IProducerService, ProducersService>();
             services.AddScoped<ICinemasService, CinemasService>();
             services.AddScoped<IMoviesService, MoviesService > ();
+            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc)) ;
+            services.AddSession();
 
             services.AddControllersWithViews();
         }
@@ -56,6 +61,7 @@ namespace eTicket_for_movies
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
