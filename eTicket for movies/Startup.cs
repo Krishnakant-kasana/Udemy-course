@@ -1,6 +1,7 @@
 using eTicket_for_movies.Data;
 using eTicket_for_movies.Data.Services;
 using eTickets.Data.Cart;
+using eTickets.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,7 @@ namespace eTicket_for_movies
             services.AddScoped<IProducerService, ProducersService>();
             services.AddScoped<ICinemasService, CinemasService>();
             services.AddScoped<IMoviesService, MoviesService > ();
+            services.AddScoped<IOrdersService, OrdersService>();
             services.AddHttpContextAccessor();
             services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc)) ;
             services.AddSession();
