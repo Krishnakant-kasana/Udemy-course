@@ -25,10 +25,10 @@ namespace eTickets.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string userId = "";/*User.FindFirstValue(ClaimTypes.NameIdentifier)*/
-            //string userRole = User.FindFirstValue(ClaimTypes.Role);
+            string userId = "";
+            //string userRole = "";
 
-            var orders = _ordersService.GetOrdersByUserIdAndRoleAsync("")
+            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
             return View(orders);
         }
         public IActionResult ShoppingCart()
@@ -47,22 +47,6 @@ namespace eTickets.Controllers
                 return View(response);
             
         }
-
-        
-
-        //public IActionResult ShoppingCart()
-        //{
-        //    var items = _shoppingCart.GetShoppingCartItems();
-        //    _shoppingCart.ShoppingCartItems = items;
-
-        //    var response = new ShoppingCartVM()
-        //    {
-        //        ShoppingCart = _shoppingCart,
-        //        ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-        //    };
-
-        //    return View(response);
-        //}
 
         public async Task<IActionResult> AddItemToShoppingCart(int id)
         {

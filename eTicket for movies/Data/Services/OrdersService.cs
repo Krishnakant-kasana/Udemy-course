@@ -15,7 +15,7 @@ namespace eTicket_for_movies.Data.Services
         {
             _context = context;
         }
-        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
+        public async Task<List<Order>> GetOrdersByUserIdAsync(string userId, string userRole)
         {
             var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Where(n => n.UserId == userId).ToListAsync();
             return orders;
@@ -43,6 +43,12 @@ namespace eTicket_for_movies.Data.Services
                 await _context.OrderItems.AddAsync(orderItem);
             }
             await _context.SaveChangesAsync();
+        }
+
+         async Task <List<Order>> IOrdersService.GetOrdersByUserIdAsync(string userId)
+        {
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Where(n => n.UserId == userId).ToListAsync();
+            return orders;
         }
     }
 }
