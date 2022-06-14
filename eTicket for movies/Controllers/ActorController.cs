@@ -6,9 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eTicket_for_movies.Models;
+using Microsoft.AspNetCore.Authorization;
+using eTicket_for_movies.Data.Static;
 
 namespace eTicket_for_movies.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorController : Controller
     {
         private readonly IActorservice _service;
@@ -17,6 +20,7 @@ namespace eTicket_for_movies.Controllers
             _service = service;
 
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAll();
@@ -40,7 +44,7 @@ namespace eTicket_for_movies.Controllers
         }
 
         //Get: Actors/Details/1
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var actorDetails = await _service.GetByIdAsync(id);
